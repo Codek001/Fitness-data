@@ -93,21 +93,21 @@ SELECT COUNT(*) FROM exercise_logs WHERE heart_rate < (220-29);
 
 /* 50-90% of max */ 
  SELECT COUNT(*) FROM exercise_logs 
-		WHERE heart_rate <= ROUND(0.90 *(220-30))
+		WHERE heart_rate <= ROUND(0.90 *(220-29))
 	AND 
 		heart_rate >= ROUND(0.50 *(220-30));
 -- Based on the AND condition, the total number of heart_rate ranging from 50 to 90% of maximum is 8        
  SELECT COUNT(*) FROM exercise_logs 
-		WHERE heart_rate <= ROUND(0.90 *(220-30))
+		WHERE heart_rate <= ROUND(0.90 *(220-29))
 	OR
-		heart_rate >= ROUND(0.50 *(220-30));      
+		heart_rate >= ROUND(0.50 *(220-29));      
 -- Based on the OR condition, the total number of heart_rate ranging from 50 to 90% of maximum is 16
 /* CASE */ 
 SELECT type, heart_rate,
 		CASE 
         WHEN heart_rate > 220-30 THEN "above max"
-		WHEN heart_rate > ROUND(0.90 *(220-30)) THEN "above target"
-        WHEN heart_rate > ROUND(0.50 *(220-30)) THEN "within target"
+		WHEN heart_rate > ROUND(0.90 *(220-29)) THEN "above target"
+        WHEN heart_rate > ROUND(0.50 *(220-29)) THEN "within target"
         ELSE "below target"
         END "hr_zone"
 FROM exercise_logs;
